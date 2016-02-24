@@ -4,7 +4,7 @@ class VintageLinesEventListener(sublime_plugin.EventListener):
 	def __init__(self):
 		self.in_check_settings = False
 		self.icon_count = 99
-		self.on_load = self.on_new = self.on_activated
+		#self.on_load = self.on_new = self.on_activated
 
 		# Set icon path depending on version
 		if int(sublime.version()) >= 3000:
@@ -14,7 +14,7 @@ class VintageLinesEventListener(sublime_plugin.EventListener):
 
 	def showRelativeNumbers(self):
 		view = self.view
-
+		self.old_line_numbers =view.settings().get('line_numbers')
 		view.settings().set('line_numbers', False)
 
 		cur_line = view.rowcol(view.sel()[0].begin())[0]
@@ -35,7 +35,7 @@ class VintageLinesEventListener(sublime_plugin.EventListener):
 			view.add_regions(name, [lines[i-start_line]], 'linenums', self.icon_path % (sublime.platform(), icon), sublime.HIDDEN)
 
 	def removeRelativeNumbers(self):
-		self.view.settings().set('line_numbers', True)
+		self.view.settings().set('line_numbers', self.old_line_numbers)
 		# Remove all relative line number regions within viewport
 		for i in range(2*self.icon_count+1):
 			if self.view.get_regions('linenum' + str(i)):
@@ -84,12 +84,17 @@ class VintageLinesEventListener(sublime_plugin.EventListener):
 
 		self.in_check_settings = False
 
+	def update_old_line_numbers(self):
+		self.old_line_numbers = self.view.settings().get('line_numbers')
+
 	def on_activated(self, view):
 		self.view = view
 		if view:
 			view.settings().clear_on_change("VintageLines")
 			view.settings().set('vintage_lines.line', -1) # Just to force an update on activation
 			view.settings().add_on_change("VintageLines", self.checkSettings)
+			self.old_line_numbers = self.view.settings().get('line_numbers')
+			view.settings().add_on_change("line_numbers", self.update_old_line_numbers)
 		self.checkSettings()
 
 	def on_selection_modified(self, view):
