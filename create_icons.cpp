@@ -27,7 +27,7 @@
 #define PATH "icons/windows/%d.png"
 #endif
 
-void create_pngs(int surfacewidth, int surfaceheight, float fontsize, const char* format, int start=0, int end=100)
+void create_pngs(int surfacewidth, int surfaceheight, float fontsize, const char* format, int start=0, int end=1000)
 {
     cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, surfacewidth, surfaceheight);
     cairo_t *cr = cairo_create(surface);
@@ -69,6 +69,6 @@ int main (int argc, char *argv[])
     int height = HEIGHT;
     float size = FONT_SIZE;
 
-    create_pngs(width*2, height*2, size*2, PATH);
+    create_pngs(width*3, height*2, size*2, PATH);
     return 0;
 }
