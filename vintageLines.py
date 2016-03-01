@@ -30,7 +30,10 @@ class VintageLinesEventListener(sublime_plugin.EventListener):
 
 		for i in range(start_line, start_line + len(lines)):
 			name = 'linenum' + str(i-start_line)
-			icon = str(int(math.fabs(cur_line - i)))
+			if cur_line == i:
+				icon = str(cur_line)
+			else:
+				icon = str(int(math.fabs(cur_line - i)))
 
 			view.add_regions(name, [lines[i-start_line]], 'linenums', self.icon_path % (sublime.platform(), icon), sublime.HIDDEN)
 
