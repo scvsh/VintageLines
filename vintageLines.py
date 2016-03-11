@@ -62,8 +62,8 @@ class VintageLinesEventListener(sublime_plugin.EventListener):
 
 			if settings.has("vintage_lines.force_mode"):
 				show = settings.get("vintage_lines.force_mode")
-			elif type(settings.get('command_mode')) is bool:
-				show = settings.get('command_mode')
+			#elif type(settings.get('command_mode')) is bool:
+			#	show = settings.get('command_mode')
 			else:
 				show = False
 
@@ -93,12 +93,12 @@ class VintageLinesEventListener(sublime_plugin.EventListener):
 	def on_activated(self, view):
 		self.view = view
 		if view:
-			view.settings().clear_on_change("VintageLines")
+			view.settings().clear_on_change("vintage_lines")
 			view.settings().set('vintage_lines.line', -1) # Just to force an update on activation
-			view.settings().add_on_change("VintageLines", self.checkSettings)
+			view.settings().add_on_change("vintage_lines", self.checkSettings)
 			self.old_line_numbers = self.view.settings().get('line_numbers')
 			view.settings().add_on_change("line_numbers", self.update_old_line_numbers)
-		self.checkSettings()
+		#self.checkSettings()
 
 	def on_selection_modified(self, view):
 		sublime.set_timeout(self.checkSettings, 10)
