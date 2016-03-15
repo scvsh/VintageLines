@@ -1,4 +1,11 @@
-# CURRENTLY NOT BEING MAINTAINED – IF YOU WOULD LIKE TO TAKE COMMAND, LET ME KNOW!
+# Forked from tmanderson.
+
+Tested on linux only now.
+TODO:
+    use two set of pngs. For current line, use the 3 digits set, for relative line, use 2 digits set.
+## v0.6
+    show current line number.
+    when toggle off, do not show line number.
 
 ## VintageLines v0.5
 ### Jankily making relative line numbers in [Vintage mode](http://www.sublimetext.com/docs/2/vintage.html)
