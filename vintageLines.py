@@ -31,7 +31,7 @@ class VintageLinesEventListener(sublime_plugin.EventListener):
 		for i in range(start_line, start_line + len(lines)):
 			name = 'linenum' + str(i-start_line)
 			if cur_line == i:
-				icon = str(cur_line)
+				icon = str(cur_line+1)
 			else:
 				icon = str(int(math.fabs(cur_line - i)))
 
@@ -46,10 +46,6 @@ class VintageLinesEventListener(sublime_plugin.EventListener):
 
 	def checkSettings(self):
 		cur_line = self.view.rowcol(self.view.sel()[0].begin())[0]
-
-		if cur_line == None:
-			settings.set("vintage_lines.force_mode", True);
-
 		if self.in_check_settings:
 			# As this function is called when a setting changes, and its children also
 			# changes settings, we don't want it to end up in an infinite loop.
