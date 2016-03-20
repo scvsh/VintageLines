@@ -1,7 +1,6 @@
 # Forked from tmanderson.
 
-Tested on linux only now.
-TODO:
+## v0.7:
     use two set of pngs. For current line, use the 3 digits set, for relative line, use 2 digits set.
 ## v0.6
     show current line number.
