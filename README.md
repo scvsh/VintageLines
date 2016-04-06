@@ -1,6 +1,6 @@
 # Forked from tmanderson.
 
-## v0.6
+## v0.5.8
     show current line number.
     when toggle off, do not show line number.
     use two set of pngs. For current line, use the 3 digits set, for relative lines, use 2 digits set.
