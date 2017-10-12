@@ -27,8 +27,15 @@ class VintageLinesEventListener(sublime_plugin.EventListener):
             name = 'linenum' + str(i-start_line)
             if cur_line == i:
                 num = cur_line+1
+
+                # Line number icons only go up to 999 so if the current
+                # absolute line number exceeds this just use 0.
+                if num > 999:
+                    num = 0
             else:
                 num = int(math.fabs(cur_line - i))
+
+            assert num in range(1000)
 
             if int(sublime.version()) >= 3000:
                 if num > 99:
