@@ -5,15 +5,15 @@
 #include <string.h>
 
 #if defined(__MACH__)
-#define FONT_FACE "menlo"
-#define FONT_SIZE 11.0
+#define FONT_FACE "SF Mono"
+#define FONT_SIZE 14.0
 #define BRIGHTNESS 0.7
 #define HEIGHT 15
-#define WIDTH 15
+#define WIDTH 20
 #define PATH "icons/osx/%d.png"
 #elif defined(__linux__)
-#define FONT_FACE "monospace"
-#define FONT_SIZE 12.0
+#define FONT_FACE "SF Mono"
+#define FONT_SIZE 14.0
 #define BRIGHTNESS 0.60
 #define HEIGHT 15
 #define WIDTH 14
@@ -23,7 +23,7 @@
 #define FONT_SIZE 11.0
 #define BRIGHTNESS 0.575
 #define HEIGHT 15
-#define WIDTH 14
+#define WIDTH 30
 #define PATH "icons/windows/%d.png"
 #endif
 
