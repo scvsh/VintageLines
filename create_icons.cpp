@@ -6,10 +6,10 @@
 
 #if defined(__MACH__)
 #define FONT_FACE "SF Mono"
-#define FONT_SIZE 14.0
+#define FONT_SIZE 11.0
 #define BRIGHTNESS 0.7
 #define HEIGHT 15
-#define WIDTH 20
+#define WIDTH 15
 #define PATH "icons/osx/%d.png"
 #elif defined(__linux__)
 #define FONT_FACE "SF Mono"
